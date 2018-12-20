@@ -5,8 +5,8 @@ timestamp()
 }
 
 LOG_FILE="/var/log/s3_upload.log"
-exec > >(tee -a $LOG_FILE) # directs stdout to log file
-exec 2>&1 # and also to console
+#exec > >(tee -a $LOG_FILE) # directs stdout to log file
+#exec 2>&1 # and also to console
 
 ec2InstanceId=`hostname`
 s3Bucket="planckheapsbucket"
