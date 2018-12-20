@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 timestamp()
 {
  date +"%Y-%m-%d %T"
@@ -25,7 +25,7 @@ for hprof_file in *.hprof
 do
   echo "$(timestamp): Processing $hprof_file file..."
   gzip $hprof_file
-  aws s3 cp ${hprof_file}.gz "s3://${s3Bucket}/${ec2InstanceId}_v${BUILD_NUMBER}_${NOW}.gz" --expires $expirationDate
+  aws s3 cp ${hprof_file}.gz "s3://${s3Bucket}/${ec2InstanceId}_v${BUILD_NUMBER}_${NOW}.gz"
   rm ${hprof_file}.gz
   echo "$(timestamp): upload dump successfuly"
 done
